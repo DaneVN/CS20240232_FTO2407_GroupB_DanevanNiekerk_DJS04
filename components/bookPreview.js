@@ -30,43 +30,13 @@ template.innerHTML = `
     .preview:hover {
     background: rgba(var(--color-blue), 0.05);
     }
-
-    .preview__image {
-    width: 48px;
-    height: 70px;
-    object-fit: cover;
-    background: grey;
-    border-radius: 2px;
-    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
-        0px 1px 1px 0px rgba(0, 0, 0, 0.1), 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
-    }
-
-    .preview__info {
-    padding: 1rem;
-    }
-
-    .preview__title {
-    margin: 0 0 0.5rem;
-    font-weight: bold;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;  
-    overflow: hidden;
-    color: rgba(var(--color-dark), 0.8)
-    }
-
-    .preview__author {
-    color: rgba(var(--color-dark), 0.4);
-    }
 </style>
-
-<button>
-  <slot name="book-image"></slot>
-  <slot name="book-info"></slot>
-  <slot name="book-title"></slot>
-  <slot name="book-author"></slot>
+<button class="preview">
+    <slot></slot>
 </button>
 `;
+//slot name="image/info/title/author" is causing some problems as soon as
+//i try to go past image in the module/helper.js
 class BookPreview extends HTMLElement {
   #inner = this.attachShadow({ mode: "closed" });
   connectedCallback() {

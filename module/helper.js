@@ -1,4 +1,4 @@
-import "../components/bookPreview";
+import "../components/bookPreview.js";
 /**
  * Creates and returns an option element.
  * @param {string} value - The option value.
@@ -20,16 +20,15 @@ export const renderBooks = (bookList) => {
   const fragment = document.createDocumentFragment();
   for (const book of bookList) {
     const element = document.createElement("book-preview");
-    element.classList = "preview";
     element.setAttribute("data-preview", book.id);
 
     element.innerHTML = `
-          <img class="preview__image" src="${book.image} slot="image" />
-          <div class="preview__info" slot="info">
-              <h3 class="preview__title" slot="title">${book.title}</h3>
-              <div class="preview__author" slot="author">${book.getAuthorName()}</div>
+          <img class="preview__image" src="${book.image}"/>
+          <div class="preview__info">
+              <h3 class="preview__title">${book.title}</h3>
+              <div class="preview__author">${book.getAuthorName()}</div>
           </div>`;
-
+    // element.innerHTML = "hellloooo";
     fragment.appendChild(element);
   }
   document.querySelector("[data-list-items]").appendChild(fragment);
