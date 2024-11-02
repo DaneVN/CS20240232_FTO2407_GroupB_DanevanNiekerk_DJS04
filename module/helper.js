@@ -23,10 +23,10 @@ export const renderBooks = (bookList) => {
     element.setAttribute("data-preview", book.id);
 
     element.innerHTML = `
-          <img class="preview__image" src="${book.image}"/>
-          <div class="preview__info">
-              <h3 class="preview__title">${book.title}</h3>
-              <div class="preview__author">${book.getAuthorName()}</div>
+          <img slot="image" class="preview__image" src="${book.image}"/>
+          <div slot="info" class="preview__info">
+              <h3 slot="title" class="preview__title">${book.title}</h3>
+              <div slot="author" class="preview__author">${book.getAuthorName()}</div>
           </div>`;
     // element.innerHTML = "hellloooo";
     fragment.appendChild(element);

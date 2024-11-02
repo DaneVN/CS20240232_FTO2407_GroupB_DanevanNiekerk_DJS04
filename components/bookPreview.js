@@ -32,13 +32,22 @@ template.innerHTML = `
     }
 </style>
 <button class="preview">
-    <slot></slot>
+    <div class="preview__image">
+    <slot name="image"></slot>
+  </div>
+  <div class="preview__details">
+    <slot name="title"></slot>
+    <slot name="author"></slot>
+    <slot name="info"></slot>
+  </div>
 </button>
 `;
-//slot name="image/info/title/author" is causing some problems as soon as
-//i try to go past image in the module/helper.js
 class BookPreview extends HTMLElement {
+  constructor() {
+    super();
+  }
   #inner = this.attachShadow({ mode: "closed" });
+
   connectedCallback() {
     const node = template.content.cloneNode(true);
     this.#inner.appendChild(node);
